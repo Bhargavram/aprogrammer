@@ -1,0 +1,43 @@
+ public void reorderList(ListNode head) {
+        if(head == null || head.next==null){
+            
+        }else{
+            List <Integer> l1  = new ArrayList<Integer>();
+        List <Integer> l2  = new ArrayList<Integer>();
+        ListNode root = head;
+        while(root!=null){
+            l1.add(root.val);
+            root = root.next;
+        }
+        int temp1 = 0;
+        int temp2 = l1.size()-1;
+        while(temp1<=temp2){
+            if(temp1 == temp2){
+                l2.add(l1.get(temp1));
+            }else{
+                l2.add(l1.get(temp1));
+                l2.add(l1.get(temp2));
+            }
+            
+            temp1++;
+            temp2--;
+        }
+        ListNode head1 = head;
+        System.out.println(l2);
+        
+        ListNode res = new ListNode(l2.get(1));
+        head1.next = res;
+        head1 = head1.next;
+          
+        int i = 2;
+        while(i<l2.size()){
+            ListNode result = new ListNode(l2.get(i));
+            head1.next = result;
+            head1 = head1.next;
+            System.out.println("print values : "+head1.val);
+            i++;
+        }
+        System.out.println("last: "+head1.val);
+        }
+        
+    }
