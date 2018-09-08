@@ -1,0 +1,35 @@
+    public ListNode oddEvenList(ListNode head) {
+        if(head == null){
+            return null;
+        }
+        if(head.next == null){
+            return head;
+        }
+        if(head.next.next == null){
+            return head;
+        }
+        ListNode odd = head;
+        ListNode start = odd;
+        ListNode even = head.next; 
+        ListNode join = even;
+        head = head.next.next;
+        int temp = 1;
+        while(head !=null){
+            if(temp%2 != 0){
+                //odd
+                odd.next = head;
+                odd = odd.next;
+            }else{
+                //even
+                even.next = head;
+                even = even.next;
+            }
+            
+            head = head.next;
+            temp++;
+        }
+        
+        even.next = null;
+        odd.next = join;
+        return start;
+    }
